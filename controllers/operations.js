@@ -16,5 +16,26 @@ const getOperations = (req, res) =>{
         });
 };
 
+const createOperation = (req, res) => {
+    // Validate request
+    // if (!req.body.username || !req.body.password) {
+    //   res.status(400).send({ message: 'Content can not be empty!' });
+    //   return;
+    // }
+  
+    const operation = new Operations(req.body);
+    operation
+      .save()
+      .then((data) => {
+        console.log(data);
+        res.status(201).send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || 'Some error occurred while creating the user.'
+        });
+      });
+  };
 
-module.exports = {getOperations};
+
+module.exports = {getOperations, createOperation};

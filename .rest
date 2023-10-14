@@ -1,1 +1,15 @@
 GET http://localhost:8080/operations
+
+###
+POST http://localhost:8080/operations HTTP/1.1
+content-type: application/json
+
+{   
+    "Sender":"Liam", 
+    "Receiver":"Kevin V", 
+    "Amount":"50", 
+    "Rate":"3.82",
+    "DepositId":"032342000",
+    "Status":"oppened",
+    "Comments":"post test"
+}
