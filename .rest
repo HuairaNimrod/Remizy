@@ -13,3 +13,20 @@ content-type: application/json
     "Status":"oppened",
     "Comments":"post test"
 }
+
+###
+GET https://remizy-v01.onrender.com/operations
+
+###
+POST https://remizy-v01.onrender.com/operations HTTP/1.1
+content-type: application/json
+
+{   
+    "Sender":"Liam", 
+    "Receiver":"Kevin V", 
+    "Amount":"50", 
+    "Rate":"3.82",
+    "DepositId":"032342000",
+    "Status":"oppened",
+    "Comments":"post test"
+}
