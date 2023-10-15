@@ -23,16 +23,16 @@ const createOperation = (req, res) => {
     //   return;
     // }
   
-    // const operation = new Operations(req.body);
-    const operation = {
-      Sender: req.body.Sender, 
-      Receiver: req.body.Receiver, 
-      Amount: req.body.Amount, 
-      Rate: req.body.Rate,
-      DepositId: req.body.DepositId,
-      Status: req.body.Status,
-      Comments: req.body.Comments
-    };
+    const operation = new Operations(req.body);
+    // const operation = {
+    //   Sender: req.body.Sender, 
+    //   Receiver: req.body.Receiver, 
+    //   Amount: req.body.Amount, 
+    //   Rate: req.body.Rate,
+    //   DepositId: req.body.DepositId,
+    //   Status: req.body.Status,
+    //   Comments: req.body.Comments
+    // };
     operation
       .save()
       .then((data) => {
