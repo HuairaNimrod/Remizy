@@ -24,7 +24,7 @@ module.exports = (mongoose) => {
                 Comments:{
                     type: String
                 }
-            })
+            },{ timestamps: false, versionKey:false })
     );
     return operationSchema;
 };

@@ -5,7 +5,7 @@ POST http://localhost:8080/operations HTTP/1.1
 content-type: application/json
 
 {   
-    "Sender":"Liam", 
+    "Sender":"Jersin", 
     "Receiver":"Kevin V", 
     "Amount":"50", 
     "Rate":"3.82",
