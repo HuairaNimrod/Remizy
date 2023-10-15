@@ -35,6 +35,38 @@
       },
       "post": {
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Sender": {
+                  "example": "any"
+                },
+                "Receiver": {
+                  "example": "any"
+                },
+                "Amount": {
+                  "example": "any"
+                },
+                "Rate": {
+                  "example": "any"
+                },
+                "DepositId": {
+                  "example": "any"
+                },
+                "Status": {
+                  "example": "any"
+                },
+                "Comments": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
