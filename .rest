@@ -1,18 +1,25 @@
-GET http://localhost:8080/operations
+
+GET http://localhost:8080/operation
 
 ###
-POST http://localhost:8080/operations HTTP/1.1
+POST http://localhost:8080/operation HTTP/1.1
 content-type: application/json
 
 {   
-    "Sender":"Jersin", 
-    "Receiver":"Kevin V", 
-    "Amount":"50", 
-    "Rate":"3.82",
-    "DepositId":"032342000",
-    "Status":"oppened",
-    "Comments":"post test"
+    "sender":"martin", 
+    "receiver":"tintin", 
+    "amount":"50", 
+    "rate":"3.82",
+    "depositId":"032342000",
+    "status":"oppened",
+    "comments":"post test"
 }
+
+###
+DELETE http://localhost:8080/operation/65341ebe5fde8630e0d417a8 HTTP/1.1
+
+
+# PRODUCTION
 
 ###
 GET https://remizy-v01.onrender.com/operations
@@ -22,7 +29,7 @@ POST https://remizy-v01.onrender.com/operations HTTP/1.1
 content-type: application/json
 
 {   
-    "Sender":"Liam", 
+    "Sender":"", 
     "Receiver":"Kevin V", 
     "Amount":"50", 
     "Rate":"3.82",

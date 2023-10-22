@@ -1,30 +1,28 @@
 module.exports = (mongoose) => {
 
-    const operationSchema = mongoose.model(
-        'operation',
-            mongoose.Schema({
-                Sender:{
+    const operationSchema = mongoose.Schema({
+                sender:{
                     type: String
                 },
-                Receiver:{
+                receiver:{
                     type: String
                 },
-                Amount:{
+                amount:{
                     type: Number
                 },
-                Rate:{
+                rate:{
                     type: Number
                 },
-                DepositId:{
+                depositId:{
                     type: String
                 },
-                Status:{
+                status:{
                     type: String
                 },
-                Comments:{
+                comments:{
                     type: String
                 }
-            },{ timestamps: false, versionKey:false })
-    );
-    return operationSchema;
+            },{ timestamps: false, versionKey:false });
+
+    return mongoose.model('operations', operationSchema);
 };

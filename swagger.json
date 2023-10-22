@@ -5,10 +5,10 @@
     "description": "Remizy API",
     "version": "1.0.0"
   },
-  "host": "remizy-v01.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/api-docs": {
@@ -21,7 +21,7 @@
         }
       }
     },
-    "/operations/": {
+    "/operation/": {
       "get": {
         "description": "",
         "responses": {
@@ -42,25 +42,10 @@
             "schema": {
               "type": "object",
               "properties": {
-                "Sender": {
+                "sender": {
                   "example": "any"
                 },
-                "Receiver": {
-                  "example": "any"
-                },
-                "Amount": {
-                  "example": "any"
-                },
-                "Rate": {
-                  "example": "any"
-                },
-                "DepositId": {
-                  "example": "any"
-                },
-                "Status": {
-                  "example": "any"
-                },
-                "Comments": {
+                "receiver": {
                   "example": "any"
                 }
               }
@@ -70,6 +55,30 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/operation/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
