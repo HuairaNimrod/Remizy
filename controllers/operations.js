@@ -50,9 +50,14 @@ const createOperation = (req, res) => {
 
   const updateOperation = async (req, res) => {
     // const operation = new Operations(req.body);
-
     try {
-      await Operations.findByIdAndUpdate(req.params.id, !req.body.sender || !req.body.receiver || !req.body.amount || !req.body.rate|| !req.body.depositId|| !req.body.status|| !req.body.comments);
+      //validate inputs
+      if (!req.body.sender || !req.body.receiver || !req.body.amount || !req.body.rate|| !req.body.depositId|| !req.body.status|| !req.body.comments) {
+        res.status(400).send({ message: 'Content can not be empty!' });
+        return;
+       }
+
+      await Operations.findByIdAndUpdate(req.params.id, req.body);
       res.status(200).send('Operation update');
     } catch (error) {
       res.status(500).send(error);
