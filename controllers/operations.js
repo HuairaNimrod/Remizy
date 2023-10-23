@@ -48,21 +48,16 @@ const createOperation = (req, res) => {
   };
 
 
-  // const updateOperation = async (req, res) => {
-  //   try{
-  //     const sender = req.body.sender;
-  //     const receiver = req.body.receiver;
-  //     const amount = req.body.amount;
-  //     const rate = req.body.rate;
-  //     const depositId = req.body.depositId;
-  //     const status = req.body.status;
-  //     const comments = req.body.comments;
+  const updateOperation = async (req, res) => {
+    // const operation = new Operations(req.body);
 
-  //   }
-  //   catch (err){
-  //     res.status(500).json(err);
-  //   }
-  // };
+    try {
+      await Operations.findByIdAndUpdate(req.params.id, req.body);
+      res.status(200).send('Operation update');
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  };
 
 
 const deleteOperation = async (req, res) => {
@@ -78,7 +73,7 @@ const deleteOperation = async (req, res) => {
     }
   };
 
-module.exports = {getOperations, createOperation, deleteOperation};
+module.exports = {getOperations, createOperation, updateOperation, deleteOperation};
 
 
 

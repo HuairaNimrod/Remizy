@@ -16,7 +16,22 @@ content-type: application/json
 }
 
 ###
-DELETE http://localhost:8080/operation/65341ebe5fde8630e0d417a8 HTTP/1.1
+PUT http://localhost:8080/operation/65346b81b076009ab8c56697 HTTP/1.1
+content-type: application/json
+
+{
+    "sender":"Krillin", 
+    "receiver":"tin", 
+    "amount":"50", 
+    "rate":"3.82",
+    "depositId":"032342000",
+    "status":"oppened",
+    "comments":"post test"
+}
+
+
+###
+DELETE http://localhost:8080/operation/65346b81b076009ab8c56697 HTTP/1.1
 
 
 # PRODUCTION

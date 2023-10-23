@@ -5,10 +5,10 @@ const doc = {
     title: 'My API',
     description: 'Remizy API',
   },
-  // host: 'remizy-v01.onrender.com',
-  // schemes: ['https'],
-  host: 'localhost:8080',
-  schemes: ['http'],
+  host: 'remizy-v02.onrender.com',
+  schemes: ['https'],
+  // host: 'localhost:8080',
+  // schemes: ['http'],
 };
 
 const outputFile = './swagger.json';
