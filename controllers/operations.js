@@ -26,7 +26,7 @@ const getOperations = (req, res) =>{
 const createOperation = (req, res) => {
     try{
       // Validate request
-     if (!req.body.sender || !req.body.receiver) {
+     if (!req.body.sender || !req.body.receiver || !req.body.amount || !req.body.rate|| !req.body.depositId|| !req.body.status|| !req.body.comments) {
       res.status(400).send({ message: 'Content can not be empty!' });
       return;
      }

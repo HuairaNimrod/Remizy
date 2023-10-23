@@ -47,6 +47,21 @@
                 },
                 "receiver": {
                   "example": "any"
+                },
+                "amount": {
+                  "example": "any"
+                },
+                "rate": {
+                  "example": "any"
+                },
+                "depositId": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
+                },
+                "comments": {
+                  "example": "any"
                 }
               }
             }
