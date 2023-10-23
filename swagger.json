@@ -89,6 +89,36 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "sender": {
+                  "example": "any"
+                },
+                "receiver": {
+                  "example": "any"
+                },
+                "amount": {
+                  "example": "any"
+                },
+                "rate": {
+                  "example": "any"
+                },
+                "depositId": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
+                },
+                "comments": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
