@@ -5,7 +5,7 @@ const doc = {
     title: 'My API',
     description: 'Remizy API',
   },
-  host: 'remizy-v02.onrender.com',
+  host: 'remizy-v03.onrender.com',
   schemes: ['https'],
   // host: 'localhost:8080',
   // schemes: ['http'],
