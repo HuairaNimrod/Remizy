@@ -1,15 +1,11 @@
-// const mongodb = require('../db/connect');
-// const ObjectId = require('mongodb').ObjectId;
-
-const { response } = require('express');
 const db = require('../models');
-const Operations = db.operation;
+const TxStatus = db.status;
 
 
-const getOperations = (req, res) =>{
+const getTxstatus = (req, res) =>{
 
   try{
-      Operations.find({})
+    TxStatus.find({})
       .then((data) => {
           res.send(data);
       })
@@ -23,15 +19,15 @@ const getOperations = (req, res) =>{
   }
 };
 
-const createOperation = (req, res) => {
+const createTxstatus = (req, res) => {
     try{
       // Validate request
-     if (!req.body.sender || !req.body.receiver || !req.body.amount || !req.body.rate|| !req.body.depositId|| !req.body.status|| !req.body.comments) {
+     if (!req.body.name) {
       res.status(400).send({ message: 'Content can not be empty!' });
       return;
      }
-    const operation = new Operations(req.body);
-    operation
+    const txstatus = new TxStatus(req.body);
+    txstatus
       .save()
       .then((data) => {
         console.log(data);
@@ -39,7 +35,7 @@ const createOperation = (req, res) => {
       })
       .catch((err) => {
         res.status(500).send({
-          message: err.message || 'Some error occurred while creating the user.'
+          message: err.message || 'Some error occurred while creating the status.'
         });
       });
     }catch (err) {
@@ -48,26 +44,10 @@ const createOperation = (req, res) => {
   };
 
 
-  const updateOperation = async (req, res) => {
-    // const operation = new Operations(req.body);
+
+const deleteTxstatus = async (req, res) => {
     try {
-      //validate inputs
-      if (!req.body.sender || !req.body.receiver || !req.body.amount || !req.body.rate|| !req.body.depositId|| !req.body.status|| !req.body.comments) {
-        res.status(400).send({ message: 'Content can not be empty!' });
-        return;
-       }
-
-      await Operations.findByIdAndUpdate(req.params.id, req.body);
-      res.status(200).send('Operation update');
-    } catch (error) {
-      res.status(500).send(error);
-    }
-  };
-
-
-const deleteOperation = async (req, res) => {
-    try {
-      const id = await Operations.findByIdAndDelete(req.params.id);
+      const id = await TxStatus.findByIdAndDelete(req.params.id);
       
       if(!id) res.status(404).send("No item found");
       res.status(200).send();
@@ -78,7 +58,7 @@ const deleteOperation = async (req, res) => {
     }
   };
 
-module.exports = {getOperations, createOperation, updateOperation, deleteOperation};
+module.exports = {getTxstatus, createTxstatus, deleteTxstatus};
 
 
 

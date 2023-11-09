@@ -4,6 +4,7 @@ GET http://localhost:8080/login
 ###
 GET http://localhost:8080/operation
 
+
 ###
 POST http://localhost:8080/operation HTTP/1.1
 content-type: application/json
@@ -35,6 +36,22 @@ content-type: application/json
 
 ###
 DELETE http://localhost:8080/operation/65346b81b076009ab8c56697 HTTP/1.1
+
+
+
+###
+GET http://localhost:8080/status
+
+###
+POST http://localhost:8080/status HTTP/1.1
+content-type: application/json
+
+{   
+    "name":"Finished"
+}
+
+###
+DELETE http://localhost:8080/status/654c99970ccec93e742b8dfc HTTP/1.1
 
 
 # PRODUCTION

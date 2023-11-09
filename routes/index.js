@@ -16,6 +16,7 @@ routes.get('/', function (req, res, next) {
       
       routes.use('/', require('./swagger'));
       routes.use('/operation', require('./operations'));
+      routes.use('/status', require('./status'));
     }
   }
 );

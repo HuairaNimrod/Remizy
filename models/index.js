@@ -7,5 +7,6 @@ const db = {};
 db.mongoose = mongoose;
 db.url = dbConfig.url;
 db.operation = require('./operations.js')(mongoose);
+db.status = require('./status.js')(mongoose);
 
 module.exports = db;
