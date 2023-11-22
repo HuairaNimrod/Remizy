@@ -15,4 +15,12 @@
   <p><%=user.email%></p>
   <pre class="block bg-gray-300 p-4 text-sm overflow-scroll"><%= userProfile %></pre>
 
+
+<ul>
+  <% allOperations.forEach(function(operation) { %>
+    <li> Name:<%= operation.sender %> Course:<%= operation.receiver %></li>
+ <% }); %> 
+
+</ul>  
+
 <%- include('partials/footer') -%>

@@ -1,6 +1,3 @@
-// const mongodb = require('../db/connect');
-// const ObjectId = require('mongodb').ObjectId;
-
 const { response } = require('express');
 const db = require('../models');
 const Operations = db.operation;
