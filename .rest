@@ -47,11 +47,39 @@ POST http://localhost:8080/status HTTP/1.1
 content-type: application/json
 
 {   
-    "name":"Finished"
+    "name":"Finishedddd"
 }
 
 ###
 DELETE http://localhost:8080/status/654c99970ccec93e742b8dfc HTTP/1.1
+
+
+# user
+
+###
+GET http://localhost:8080/users/6565a28e2cfbbef474b6f7a0
+###
+POST http://localhost:8080/users/ HTTP/1.1
+content-type: application/json
+
+{   
+    "email":"nim@mail.com", 
+    "venmoUser":"@nim", 
+    "nickname":"Nim"
+}
+
+###
+PUT http://localhost:8080/users/6565a28e2cfbbef474b6f7a0 HTTP/1.1
+content-type: application/json
+
+{   
+    "email":"nimx@mail.com", 
+    "venmoUser":"@Nim", 
+    "nickname":"Nim"
+}
+# end user
+
+
 
 
 # PRODUCTION

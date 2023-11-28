@@ -1,17 +1,19 @@
-module.exports = (mongoose) => {
+const mongoose = require('mongoose');
 
-    const userSchema = mongoose.Schema({
-                nickname:{
-                    type: String
-                },
-                venmoId:{
-                    type: String
-                },
+const userSchema = new mongoose.Schema({
                 email:{
-                    type: String
+                    type: String,
+                    required: true
+                },
+                venmoUser:{
+                    type: String,
+                    required: true
+                },
+                nickname:{
+                    type: String,
+                    required: true
                 }
 
-            },{ timestamps: false, versionKey:false });
+            });
 
-    return mongoose.model('status', statusSchema);
-};
+module.exports = mongoose.model('User', userSchema, 'users');
