@@ -58,13 +58,17 @@ DELETE http://localhost:8080/status/654c99970ccec93e742b8dfc HTTP/1.1
 
 ###
 GET http://localhost:8080/users/6565a28e2cfbbef474b6f7a0
+
+###
+GET http://localhost:8080/users/email/change@mail.com
+
 ###
 POST http://localhost:8080/users/ HTTP/1.1
 content-type: application/json
 
 {   
-    "email":"nim@mail.com", 
-    "venmoUser":"@nim", 
+    "email":"test@mail.com", 
+    "venmoUser":"", 
     "nickname":"Nim"
 }
 

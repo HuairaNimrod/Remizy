@@ -19,6 +19,23 @@ exports.findById = (req, res) => {
   
 };
 
+exports.findOne = (req, res) => {
+  
+  let userEmail = req.params.email;
+  
+  User.findOne({ email: userEmail })
+      .then((data) => {
+        if (!data) res.status(404).send({ message: 'No user found with email ' + userEmail });
+        else res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: 'Error retrieving user with email ' + userEmail,
+        });
+      });
+  
+};
+
 exports.updateUser = async (req, res) => {
 
   const userId = req.params.id;

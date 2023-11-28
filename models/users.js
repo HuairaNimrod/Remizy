@@ -6,12 +6,10 @@ const userSchema = new mongoose.Schema({
                     required: true
                 },
                 venmoUser:{
-                    type: String,
-                    required: true
+                    type: String
                 },
                 nickname:{
-                    type: String,
-                    required: true
+                    type: String
                 }
 
             });
