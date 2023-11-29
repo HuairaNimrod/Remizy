@@ -63,13 +63,13 @@ GET http://localhost:8080/users/6565a28e2cfbbef474b6f7a0
 GET http://localhost:8080/users/email/change@mail.com
 
 ###
-POST http://localhost:8080/users/ HTTP/1.1
+POST http://localhost:8080/users 
 content-type: application/json
 
 {   
     "email":"test@mail.com", 
     "venmoUser":"", 
-    "nickname":"Nim"
+    "nickname":"nimi"
 }
 
 ###

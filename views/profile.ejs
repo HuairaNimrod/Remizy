@@ -4,15 +4,15 @@
     <!-- <h1 class=" flex justify-left text-4xl mb-4">Profile</h1> -->
     <form class="mt-4 mb-4 border-2 w-2/3">
       <label class="text-left text-[#D32D27] font-bold mt-4" for="fname">Email</label><br>
-      <input class="w-full mt-4 mb-4 rounded-lg p-2 text-gray-400" type="text" value="<%=user.email%>" readonly=""><br>
+      <input class="w-full mt-4 mb-4 rounded-lg p-2 text-gray-400" type="text" value="<%=usersInfo.email%>" readonly=""><br>
       <label class="text-[#D32D27] font-bold" for="fname">Venmo Account</label><br>
       <input class="w-full mt-4 mb-4 rounded-lg p-2" type="text" id="fname" placeholder="@your-venmo-account"><br>
       <label class="text-[#D32D27] font-bold" for="fname">Name</label><br>
-      <input class="w-full mt-4 mb-4 rounded-lg p-2" type="text" id="fname" value="<%=user.nickname%>"><br>      
+      <input class="w-full mt-4 mb-4 rounded-lg p-2" type="text" id="fname" value="<%=usersInfo.nickname%>"><br>      
     </form>
     </div>
     <div class="flex justify-center">
-      <button class="my-10 text-white w-52 bg-[#D32D27] rounded-lg p-2">Begin Transfer
+      <button class="my-10 text-white w-52 bg-[#D32D27] rounded-lg p-2">Save
       </button>
     </div>
     
@@ -26,11 +26,6 @@
   <pre class="block bg-gray-300 p-4 text-sm"><%= userProfile %></pre>
 
 
-<ul>
-  <% allOperations.forEach(function(operation) { %>
-    <li> Name:<%= operation.sender %> Course:<%= operation.receiver %></li>
- <% }); %> 
-
-</ul>  
+ 
 
 <%- include('partials/footer') -%>
