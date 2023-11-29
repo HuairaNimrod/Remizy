@@ -61,7 +61,12 @@ routes.get('/transaction', requiresAuth(), async (req, res, next) => {
     });
   }
   catch{
-    console.log('errorrrrs');
+    const hasEmail = false;
+    console.log(hasEmail);
+    res.render('transaction', {
+      title: "Operation",
+      hasEmail
+    });
   }
 });
 

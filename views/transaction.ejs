@@ -1,5 +1,33 @@
 <%- include('partials/header') -%>
 
-<h1>Operations</h1>
+
+
+<% if (hasEmail) { %>
+
+    <h1>Operations</h1>
+
+    <% } 
+
+else { %>
+
+    <div class="grid text-center">
+        <!-- <h1 class=" flex justify-left text-4xl mb-4">Profile</h1> -->
+        <h4 class="my-4 font-bold text-[#D32D27]">Complete your Profile before using the app</h4>
+        <p class="my-4">Hi, <span><%=user.nickname%> </span>  you must setup your profile first before starting a new transaction</p><br>      
+        
+    </div>
+    <div class="flex justify-center py-5">
+        <div class="flex justify-center w-52 border-2 bg-[#D32D27] mr-4 rounded-lg">
+            <a href="/profile"
+            class="text-white p-2">Go to Profile</a>
+        </div>
+    </div>
+        
+       
+        
+      </div>
+    
+    <% } %>
+
 
 <%- include('partials/footer') -%>
