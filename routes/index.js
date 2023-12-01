@@ -76,10 +76,36 @@ routes.get('/profile', requiresAuth(), async (req, res, next) => {
   };
   const response = await axios.get(apiUrl, {headers});
   const usersInfo = response.data;
+  console.log('profile ');
+  console.log(usersInfo);
     
     res.render('profile', {
       userProfile: JSON.stringify(req.oidc.operation, null, 2),
       title: 'Profile page',
+      usersInfo
+    });
+  
+});
+
+routes.get('/profileedit', requiresAuth(), async (req, res, next) => {
+
+
+  const user = JSON.stringify(req.oidc.user, null, 2);
+  var userDetail = JSON.parse(user);
+  const currEmail = userDetail.email;
+  
+  const apiUrl = `http://localhost:8080/users/email/${currEmail}`;
+  const headers = {
+    Accept: 'application/json',
+  };
+  const response = await axios.get(apiUrl, {headers});
+  const usersInfo = response.data;
+  console.log('profileedit ');
+  console.log(usersInfo);
+    
+    res.render('profileedit', {
+      userProfile: JSON.stringify(req.oidc.operation, null, 2),
+      title: 'Profileedit page',
       usersInfo
     });
   
