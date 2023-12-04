@@ -23,10 +23,7 @@ routes.use('/recipients', recipient);
 routes.get('/',  async (req, res, next) => {
   const isLogged = req.oidc.isAuthenticated()
   console.log(isLogged);
-  res.render('index', {
-    title: 'Auth0 Webapp sample Nodejs',
-    isAuthenticated: req.oidc.isAuthenticated()
-  });
+  
   if(isLogged){
         const user = JSON.stringify(req.oidc.user, null, 2);
         // console.log(user);
@@ -35,17 +32,36 @@ routes.get('/',  async (req, res, next) => {
       //validate if user exists
         const currEmail = userDetail.email;
         // console.log(currEmail);
-
-      const apiUrl = `http://localhost:8080/users/email/${currEmail}`;
-      const headers = {
-        Accept: 'application/json'
-      };
+        
       
        try{
+
+        const apiUrl = `http://localhost:8080/users/email/${currEmail}`;
+        const headers = {
+        Accept: 'application/json'
+        };
         const response = await axios.get(apiUrl, {headers});
         const users =response.data;
         app.locals.usersId = users._id; //setting the users_id as in locals
         console.log("asdasd "+ users.email);
+
+
+        //populate the main page
+              try {
+                
+                const responseRecipients = await axios.get(`http://localhost:8080/recipients/${users._id}`);
+                console.log(responseRecipients.data);
+                console.log(':)');
+
+                res.render('index', {
+                  title: 'Auth0 Webapp sample Nodejs',
+                  isAuthenticated: req.oidc.isAuthenticated(),
+                  Recipients: responseRecipients.data
+                });
+
+              } catch (error) {
+                console.error(error);
+              }
       }
       catch{
         const hasEmail = false;
@@ -54,7 +70,7 @@ routes.get('/',  async (req, res, next) => {
         console.log(userDetail.email);
 
 
-        try {
+      try {
           const response = await axios.post('http://localhost:8080/users', {
             // Data to be sent to the server
             email: userDetail.email,
@@ -171,7 +187,7 @@ module.exports = routes;
 
 
 routes.get('/recipientAdd', async (req, res) => {
-  const usersId = app.locals.usersId
+  const usersId = app.locals.usersId;
   res.render('recipientAdd',{
     title: "Add Recepient",
     usersId
