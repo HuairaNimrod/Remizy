@@ -1,8 +1,10 @@
 const express = require('express');
+const app = express();
 const routes =  express.Router();
 // const { auth } = require('express-openid-connect');
 const { requiresAuth } = require('express-openid-connect');
 const user = require('./users');
+const recipient = require('./recipients');
 const models = require('../models')
 const axios = require('axios');
 const dotenv = require('dotenv');
@@ -16,6 +18,7 @@ routes.use('/', require('./swagger'));
 routes.use('/operation', require('./operations'));
 routes.use('/status', require('./status'));
 routes.use('/users', user);
+routes.use('/recipients', recipient);
 
 routes.get('/',  async (req, res, next) => {
   const isLogged = req.oidc.isAuthenticated()
@@ -41,6 +44,7 @@ routes.get('/',  async (req, res, next) => {
        try{
         const response = await axios.get(apiUrl, {headers});
         const users =response.data;
+        app.locals.usersId = users._id; //setting the users_id as in locals
         console.log("asdasd "+ users.email);
       }
       catch{
@@ -167,9 +171,20 @@ module.exports = routes;
 
 
 routes.get('/recipientAdd', async (req, res) => {
-
   res.render('recipientAdd',{
     title: "Add Recepient"
   });
+
+});
+
+routes.post('/saveRecipient', async (req, res) => {
+  
+  try{
+    console.log(req.body.recipient);
+    console.log(app.locals.usersId);
+    // res.redirect('/');
+  }catch{
+    console.log('nel');
+  }
 
 });

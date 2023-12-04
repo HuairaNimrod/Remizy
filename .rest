@@ -79,9 +79,26 @@ content-type: application/json
 {   
     "email":"nimx@mail.com", 
     "venmoUser":"@Nim", 
-    "nickname":"Pin"
+    "nickname":"Nim"
 }
+
 # end user
+
+# recipients
+###
+GET http://localhost:8080/recipients/656d925b37f5ed3c1e072c93
+###
+POST http://localhost:8080/recipients 
+content-type: application/json
+
+{   
+    "currency":"Sol", 
+    "bank":"Interbank", 
+    "accountType":"savings",
+    "accountNumber":"123131231", 
+    "accountName":"Jose Peral", 
+    "usersId":"656d925b37f5ed3c1e072c93"
+}
 
 
 
