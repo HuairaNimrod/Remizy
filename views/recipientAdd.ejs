@@ -5,7 +5,7 @@
 
 <div class="flex justify-center">
     <form action="/saveRecipient" method="POST" class="mt-4 mb-4 w-2/3">
-      <input type="hidden" name="_method" value="PUT">
+      <input type="hidden" name="recipient[usersId]" value="<%=usersId%>">
       
       <label class="text-left text-[#D32D27] font-mono mt-4">Currency</label><br>
       <input class="w-full mt-2 mb-4 rounded-lg p-2 text-gray-400" type="text" name="recipient[currency]" value="Sol" readonly><br>

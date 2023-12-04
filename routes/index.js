@@ -171,20 +171,22 @@ module.exports = routes;
 
 
 routes.get('/recipientAdd', async (req, res) => {
+  const usersId = app.locals.usersId
   res.render('recipientAdd',{
-    title: "Add Recepient"
+    title: "Add Recepient",
+    usersId
   });
 
 });
 
 routes.post('/saveRecipient', async (req, res) => {
   
-  try{
-    console.log(req.body.recipient);
-    console.log(app.locals.usersId);
-    // res.redirect('/');
-  }catch{
-    console.log('nel');
+  try {
+    const response = await axios.post('http://localhost:8080/recipients', req.body.recipient);
+    console.log(response.data);
+    res.redirect('/');
+  } catch (error) {
+    console.error(error);
   }
 
 });
