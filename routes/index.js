@@ -168,9 +168,12 @@ routes.get('/transaction', requiresAuth(), async (req, res, next) => {
     const users =response.data;
     console.log("asdasd "+ users.email);
     const hasEmail = true;
+    const responseRecipients = await axios.get(`http://localhost:8080/recipients/${users._id}`);
+    const recipientList = responseRecipients.data
     res.render('transaction', {
       title: "Operation",
-      hasEmail
+      hasEmail,
+      recipientList
     });
   }
   catch{

@@ -4,7 +4,51 @@
 
 <% if (hasEmail) { %>
 
-    <h1>Operations</h1>
+<h1 class="text-[#D32D27] font-bold mb-4">Transaction</h1>
+
+<div class="flex justify-center">
+    <form action="/" method="POST" class="mt-4 mb-4 w-2/3">
+        <input type="hidden" name="recipient[usersId]" value="">
+          
+        <label class="text-left text-[#D32D27] font-mono mt-4">Sender</label><br>
+        <input class="w-full mt-2 mb-4 rounded-lg p-2 text-gray-400" type="text" name="recipient[currency]" placeholder="@Venmo_User" readonly><br>
+         
+        
+        <label class="text-left text-[#D32D27] font-mono mt-4">Recepient</label><br>
+        <select class="w-full mt-2 mb-4 rounded-lg p-2" id="status" name="recipient[accountType]" placeholder="Select One">
+                  <option class="text-gray-400" value="" disabled selected>Select One</option>
+                  <% for(var i=0; i < recipientList.length; i++) { %>
+                  <option class="p-2"><%= recipientList[i].accountName %></option>
+                    <% } %>
+         </select>  
+      
+
+        <div class="flex">
+            <div class="w-2/5">
+                <label class="text-left text-[#D32D27] font-mono mt-4">Amount</label><br>
+                <input class="w-5/6 mt-2 mb-4 rounded-lg p-2" type="text" name="recipient[currency]" placeholder="USD"><br>
+         
+                <!-- <input class="w-full mt-2 mb-4 rounded-lg p-2 text-gray-400" type="text" name="" placeholder="Select One" ><br> -->
+              </div>
+              <div class="w-3/5 pt-2">
+                    <div class="w-full p-1">
+                        <p class="text-right text-[#6E6E6E] font-mono mt-2">Rate <span class="pl-5 w-2/4">3.71</span></p>
+                    </div>
+                    <div class="w-full">
+                        <p class="text-right text-[#6E6E6E] font-mono">Sending <span class="pl-2 w-2/4"><%= %><span> PEN</span></p>
+                    </div>
+              </div>
+        </div>
+          
+          
+         
+          <div class="flex justify-center">
+          <input class="my-10 w-52 border-2 bg-[#D32D27] mr-4 rounded-lg text-white p-2" type="submit" value="Continue">
+          </div>
+      </form>
+</div>
+
+
 
     <% } 
 
