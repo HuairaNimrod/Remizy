@@ -115,7 +115,7 @@ routes.get('/profileedit', requiresAuth(), async (req, res, next) => {
   
 });
 
-routes.post('/updateUsers/:id', async (req, res) => {
+routes.post('/updateUsers/:id', requiresAuth(), async (req, res) => {
 
 
       try {
@@ -164,3 +164,12 @@ routes.get('/transaction', requiresAuth(), async (req, res, next) => {
 });
 
 module.exports = routes;
+
+
+routes.get('/recipientAdd', async (req, res) => {
+
+  res.render('recipientAdd',{
+    title: "Add Recepient"
+  });
+
+});

@@ -1,0 +1,43 @@
+<%- include('partials/header') -%>
+
+ 
+<h1 class="text-[#D32D27] font-bold mb-4">Add Recepient</h1>
+
+<div class="flex justify-center">
+    <form action="" method="POST" class="mt-4 mb-4 w-2/3">
+      <input type="hidden" name="_method" value="PUT">
+      
+      <label class="text-left text-[#D32D27] font-mono mt-4">Currency</label><br>
+      <input class="w-full mt-2 mb-4 rounded-lg p-2 text-gray-400" type="text" name="recipient[currency]" value="Sol" readonly><br>
+     
+      <label class="text-left text-[#D32D27] font-mono mt-4">Bank</label><br>
+      <input class="w-full mt-2 mb-4 rounded-lg p-2 " type="text" name="recipient[Bank]" placeholder="Name of the Bank"><br>
+    
+      <div class="flex">
+        <div class="w-2/5">
+            <label class="text-left text-[#D32D27] font-mono mt-4">Type</label><br>
+            <select class="mt-2 mb-4 rounded-lg p-2" id="status" name="recipient[AccountType]">
+              <option value="Checking" selected>Checking</option>
+              <option value="Saving">Saving</option>
+              {{/select}}
+            </select>  
+            <!-- <input class="w-full mt-2 mb-4 rounded-lg p-2 text-gray-400" type="text" name="" placeholder="Select One" ><br> -->
+          </div>
+          <div class="w-3/5">
+            <label class="text-left text-[#D32D27] font-mono mt-4">Account Number</label><br>
+            <input class="mt-2 mb-4 rounded-lg p-2" type="text" name="recipient[AccountNumber]" placeholder="12345678"><br>
+          </div>
+      </div>
+      
+      
+      <label class="text-left text-[#D32D27] font-mono mt-4">Account Owner</label><br>
+      <input class="w-full mt-2 mb-4 rounded-lg p-2" type="text" name="recipient[AccountName]" placeholder="First & Last Name"><br>
+
+      <div class="flex justify-center">
+      <input class="my-5 w-52 border-2 bg-[#D32D27] mr-4 rounded-lg text-white p-2" type="submit" value="Save">
+      </div>
+</form>
+
+ 
+
+<%- include('partials/footer') -%>
