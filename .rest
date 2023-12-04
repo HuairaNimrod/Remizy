@@ -73,13 +73,13 @@ content-type: application/json
 }
 
 ###
-PUT http://localhost:8080/users/6565a28e2cfbbef474b6f7a0 HTTP/1.1
+PUT http://localhost:8080/users/656700ae188d1f0d9a3b1e8e HTTP/1.1
 content-type: application/json
 
 {   
     "email":"nimx@mail.com", 
     "venmoUser":"@Nim", 
-    "nickname":"Nim"
+    "nickname":"Pin"
 }
 # end user
 

@@ -3,11 +3,15 @@ const routes =  express.Router();
 // const { auth } = require('express-openid-connect');
 const { requiresAuth } = require('express-openid-connect');
 const user = require('./users');
+const models = require('../models')
 const axios = require('axios');
 const dotenv = require('dotenv');
 const { createUser } = require('../controllers/user');
 dotenv.config();
 
+const bodyParser = require('body-parser');
+
+routes.use(bodyParser.urlencoded({ extended: true }));
 routes.use('/', require('./swagger'));
 routes.use('/operation', require('./operations'));
 routes.use('/status', require('./status'));
@@ -110,6 +114,20 @@ routes.get('/profileedit', requiresAuth(), async (req, res, next) => {
     });
   
 });
+
+routes.post('/updateUsers/:id', async (req, res) => {
+
+
+      try {
+        const response = await axios.put(`http://localhost:8080/users/${req.params.id}`, req.body.users);
+        console.log(response.data);
+        res.redirect('/profile');
+      } catch (error) {
+        console.error(error);
+      }
+})
+
+
 
 routes.get('/transaction', requiresAuth(), async (req, res, next) => {
 

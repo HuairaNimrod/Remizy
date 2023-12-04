@@ -2,34 +2,22 @@
 
   <h1 class="flex justify-left text-[#D32D27] font-bold mb-4">Edit Information</h1>
   <div class="flex justify-center">
-    <form class="mt-4 mb-4 w-2/3">
-      <label class="text-left text-[#D32D27] font-mono mt-4" for="fname">Email</label><br>
-      <input class="w-full mt-4 mb-4 rounded-lg p-2 text-gray-400" type="text" value="<%=usersInfo.email%>" readonly><br>
+    <form action="/updateUsers/<%=usersInfo._id%>" method="POST" class="mt-4 mb-4 w-2/3">
+      <input type="hidden" name="_method" value="PUT">
+      <label class="text-left text-[#D32D27] font-mono mt-4">Email</label><br>
+      <input class="w-full mt-4 mb-4 rounded-lg p-2 text-gray-400" type="text" name="users[email]" value="<%=usersInfo.email%>" readonly><br>
+     
       <label class="text-[#D32D27] font-mono" for="fname">Venmo Account</label><br>
-      <input class="w-full mt-4 mb-4 rounded-lg p-2" type="text" placeholder="@venmo_User"
-            value="<%=usersInfo.venmoUser%>">
-            
-            <br>
+      <input class="w-full mt-4 mb-4 rounded-lg p-2" type="text" name="users[venmoUser]" placeholder="@venmo_User"
+            value="<%=usersInfo.venmoUser%>"><br>
+
       <label class="text-[#D32D27] font-mono" for="fname">Name</label><br>
-      <input class="w-full mt-4 mb-4 rounded-lg p-2" type="text" value="<%=usersInfo.nickname%>"><br>      
+      <input class="w-full mt-4 mb-4 rounded-lg p-2" type="text" name="users[nickname]" value="<%=usersInfo.nickname%>"><br>      
+    
+      <input class="flex justify-center my-5 w-52 border-2 bg-[#D32D27] mr-4 rounded-lg text-white p-2" type="submit" value="Save">
+    
     </form>
   </div>
-
-  <div class="flex justify-center py-5">
-    <div class="flex justify-center w-52 border-2 bg-[#D32D27] mr-4 rounded-lg">
-        <a href="/saveUserEdit"
-        class="text-white p-2">Save Information</a>
-    </div>
-  </div>
-    
-   
-    
-  
-
-  
-  
-  <pre class="block bg-gray-300 p-4 text-sm"><%= userProfile %></pre>
-
 
  
 
