@@ -1,11 +1,11 @@
 const express = require('express');
 const router =  express.Router();
 
-const operationController = require('../controllers/operations');
+const operations = require('../controllers/operations.js');
 
-router.get('/', operationController.getOperations);
-router.post('/', operationController.createOperation);
-router.put('/:id', operationController.updateOperation);
-router.delete('/:id', operationController.deleteOperation);
+router.get('/:sender', operations.getOperations);
+router.post('/', operations.createOperation);
+router.put('/:id', operations.updateOperation);
+router.delete('/:id', operations.deleteOperation);
 
 module.exports = router;

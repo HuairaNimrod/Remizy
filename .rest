@@ -2,11 +2,11 @@
 GET http://localhost:8080/login
 
 ###
-GET http://localhost:8080/operation
+GET http://localhost:8080/operations
 
 
 ###
-POST http://localhost:8080/operation HTTP/1.1
+POST http://localhost:8080/operations HTTP/1.1
 content-type: application/json
 
 {   
@@ -20,22 +20,19 @@ content-type: application/json
 }
 
 ###
-PUT http://localhost:8080/operation/65346b81b076009ab8c56697 HTTP/1.1
+PUT http://localhost:8080/operations/656ee2c79e4980d0f6426cf5 HTTP/1.1
 content-type: application/json
 
 {
-    "sender":"Krillin", 
-    "receiver":"tin", 
-    "amount":"50", 
-    "rate":"3.82",
+    
     "depositId":"032342000",
-    "status":"oppened",
+    "status":"Closed",
     "comments":"post test"
 }
 
 
 ###
-DELETE http://localhost:8080/operation/65346b81b076009ab8c56697 HTTP/1.1
+DELETE http://localhost:8080/operations/656ee18b9e4980d0f6426ced HTTP/1.1
 
 
 

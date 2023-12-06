@@ -1,0 +1,53 @@
+<%- include('partials/header') -%>
+
+
+<h1 class="text-[#D32D27] font-bold mb-4">Transaction</h1>
+
+<div >
+    <div class="text-center">
+        <p >Use our Venmo Account details to send us the money</p>
+    </div>
+    <div class=" grid grid-flow-row auto-rows-max m-5 bg-white p-6 rounded-lg">
+        <div class="flex justify-center">
+            <div class="flex w-1/2 text-left">
+                <div class="w-1/4">
+                    
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M26.4535 0H3.54651C1.58783 0 0 1.58783 0 3.54651V26.4535C0 28.4122 1.58783 30 3.54651 30H26.4535C28.4122 30 30 28.4122 30 26.4535V3.54651C30 1.58783 28.4122 0 26.4535 0Z" fill="#3396CD"/>
+                            <path d="M22.393 6.10468C23.0384 7.16863 23.3279 8.26572 23.3279 9.65119C23.3279 14.0698 19.5564 19.8082 16.4953 23.8372H9.50582L6.70349 7.0727L12.8256 6.4913L14.314 18.4198C15.6977 16.1628 17.4087 12.6163 17.4087 10.2C17.4087 8.87619 17.182 7.97619 16.8273 7.23491L22.393 6.10468Z" fill="white"/>
+                        </svg>
+                    
+                </div>
+                <p class="w-3/4">Venmo Account</p>
+            </div>
+            <div class="w-1/2 text-right text-gray-400">
+                <p>@Remitzy</p>
+            </div>   
+        </div>
+        <div class="my-5 font-mono">
+            <p>After you transfer us the money to our Venmo account, copy the <span class="font-bold">Transaction ID</span> and type it in the box below to finish your transfer. </p>
+        </div>
+    </div>
+</div>
+
+
+<div class="flex justify-center">
+    <form action="/transactionFinished" method="POST" class="mt-4 mb-4 w-2/3">
+        <input type="hidden" name="operations[_id]" value="<%=operationId%>">
+        <input type="hidden" name="operations[status]" value="Finished">
+
+        <label class="text-left text-[#D32D27] font-mono mt-4">Venmo Transaction Id</label><br>
+        <input class="w-full mt-2 mb-4 rounded-lg p-2" type="text" name="operations[depositId]" placeholder="93837492323"><br>
+             
+        <div class="flex text-[#D32D27] justify-center mt-6 text-[10px]">
+            <p>Have you already made the transfer to our account?</p>
+        </div>
+        <div class="flex justify-center">
+            <input class="mb-10 mt-2 w-52 border-2 bg-[#D32D27] mr-4 rounded-lg text-white p-2" type="submit" value="Finish Transfer">
+        </div>
+      </form>
+</div>
+
+
+
+<%- include('partials/footer') -%>

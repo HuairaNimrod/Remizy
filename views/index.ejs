@@ -20,20 +20,24 @@
             <table class="table-auto w-full mb-4">
                 <thead>
                   <tr>
-                    <th>Date</th>
+                    <th>Recipient</th>
                     <th>Amount</th>
                     <th>State</th>
                   </tr>
                 </thead>
               
+
                 <tbody>
-                  <% for(var i=0; i < Recipients.length; i++) { %>
-                  <tr class="border-b-2 ">
-                    <td class="p-2 text-center"><%= Recipients[i].bank %></td>
-                    <td class="p-2 text-center"><%= Recipients[i].accountName %></td>
-                    <td class="p-2 text-center"><%= Recipients[i].accountType %></td>
-                  </tr>
-                  <% } %>
+
+                <% if(hasOperations) {%>
+                    <% for(var i=0; i < transfers.length; i++) { %>
+                    <tr class="border-b-2 ">
+                        <td class="p-2 text-center font-light"><%= transfers[i].receiver %></td>
+                        <td class="p-2 text-center font-light"><span>$</span><%= transfers[i].amount %></td>
+                        <td class="p-2 text-center font-light"><%= transfers[i].status %></td>
+                    </tr>
+                    <% } %>
+                <%}%>
                 </tbody>
               </table>
             

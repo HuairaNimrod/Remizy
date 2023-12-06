@@ -1,12 +1,13 @@
-const { response } = require('express');
 const db = require('../models');
 const Operations = db.operation;
 
 
-const getOperations = (req, res) =>{
+exports.getOperations = (req, res) =>{
+
+  let senderName = req.params.sender;
 
   try{
-      Operations.find({})
+      Operations.find({sender: senderName})
       .then((data) => {
           res.send(data);
       })
@@ -20,10 +21,10 @@ const getOperations = (req, res) =>{
   }
 };
 
-const createOperation = (req, res) => {
+exports.createOperation = (req, res) => {
     try{
       // Validate request
-     if (!req.body.sender || !req.body.receiver || !req.body.amount || !req.body.rate|| !req.body.depositId|| !req.body.status|| !req.body.comments) {
+     if (!req.body.sender || !req.body.receiver || !req.body.amount || !req.body.rate| !req.body.status) {
       res.status(400).send({ message: 'Content can not be empty!' });
       return;
      }
@@ -36,7 +37,7 @@ const createOperation = (req, res) => {
       })
       .catch((err) => {
         res.status(500).send({
-          message: err.message || 'Some error occurred while creating the user.'
+          message: err.message || 'Some error occurred while creating the Operation.'
         });
       });
     }catch (err) {
@@ -45,24 +46,25 @@ const createOperation = (req, res) => {
   };
 
 
-  const updateOperation = async (req, res) => {
-    // const operation = new Operations(req.body);
+  exports.updateOperation = async (req, res) => {
+
+    const operationId = req.params.id;
     try {
       //validate inputs
-      if (!req.body.sender || !req.body.receiver || !req.body.amount || !req.body.rate|| !req.body.depositId|| !req.body.status|| !req.body.comments) {
+      if ( !req.body.depositId|| !req.body.status) {
         res.status(400).send({ message: 'Content can not be empty!' });
         return;
        }
 
-      await Operations.findByIdAndUpdate(req.params.id, req.body);
-      res.status(200).send('Operation update');
+      const updateOperation = await Operations.findOneAndUpdate({_id: req.params.id}, req.body, { new: true });
+      res.status(201).json(updateOperation);
     } catch (error) {
       res.status(500).send(error);
     }
   };
 
 
-const deleteOperation = async (req, res) => {
+  exports.deleteOperation = async (req, res) => {
     try {
       const id = await Operations.findByIdAndDelete(req.params.id);
       
@@ -74,9 +76,5 @@ const deleteOperation = async (req, res) => {
       res.status(500).json(err || 'Some error occurred while deleting the contact.');
     }
   };
-
-module.exports = {getOperations, createOperation, updateOperation, deleteOperation};
-
-
 
 

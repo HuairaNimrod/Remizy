@@ -1,6 +1,6 @@
-module.exports = (mongoose) => {
+const mongoose = require('mongoose');
 
-    const operationSchema = mongoose.Schema({
+    const operationSchema = new mongoose.Schema({
                 sender:{
                     type: String
                 },
@@ -24,5 +24,4 @@ module.exports = (mongoose) => {
                 }
             },{ timestamps: false, versionKey:false });
 
-    return mongoose.model('operations', operationSchema);
-};
+ module.exports = mongoose.model('Operation', operationSchema, 'operations');

@@ -1,0 +1,43 @@
+<%- include('partials/header') -%>
+
+
+<div >
+    
+    <div class=" grid grid-flow-row auto-rows-max m-5 bg-white p-6 rounded-lg">
+        <div class="text-center py-5">
+            <h4 class="font-bold">Transaction Details</h4>
+        </div>
+        <div>
+            <h4 class="font-bold">Status</h4>
+            <p class="font-light"><%=responseList.status%></p>
+        </div>
+        <div class="py-2">
+            <h4 class="font-bold">Transaction Id</h4>
+            <p class="font-light"><%=responseList._id%></p>
+        </div>
+        <div class="py-2">
+            <h4 class="font-bold">Amount</h4>
+            <p class="font-light"><%=responseList.amount%></p>
+        </div>
+        <div class="py-2">
+            <h4 class="font-bold">Sender</h4>
+            <p class="font-light"><%=responseList.sender%></p>
+        </div>
+        <div class="py-2">
+            <h4 class="font-bold">Recipient</h4>
+            <p class="font-light"><%=responseList.receiver%></p>
+        </div>
+        <div class="py-2">
+            <h4 class="font-bold">Venmo Transaction Id</h4>
+            <p class="font-light"><%=responseList.depositId%></p>
+        </div>
+            
+    </div>
+</div>
+
+
+
+
+
+
+<%- include('partials/footer') -%>
