@@ -4,6 +4,10 @@ const mongoose = require('mongoose');
                 sender:{
                     type: String
                 },
+                usersId:{
+                    type: String,
+                    required: true
+                },
                 receiver:{
                     type: String
                 },

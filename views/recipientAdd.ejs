@@ -11,26 +11,27 @@
       <input class="w-full mt-2 mb-4 rounded-lg p-2 text-gray-400" type="text" name="recipient[currency]" value="Sol" readonly><br>
      
       <label class="text-left text-[#D32D27] font-mono mt-4">Bank</label><br>
-      <input class="w-full mt-2 mb-4 rounded-lg p-2 " type="text" name="recipient[bank]" placeholder="Name of the Bank"><br>
+      <input class="w-full mt-2 mb-4 rounded-lg p-2 " type="text" name="recipient[bank]" placeholder="Name of the Bank" required><br>
     
       <div class="flex">
         <div class="w-2/5">
             <label class="text-left text-[#D32D27] font-mono mt-4">Type</label><br>
-            <select class="mt-2 mb-4 rounded-lg p-2" id="status" name="recipient[accountType]">
-              <option value="Checking" selected>Checking</option>
+            <select class="mt-2 mb-4 rounded-lg p-2" id="status" name="recipient[accountType]"  required>
+              <option class="text-gray-400" value="" disabled selected>Select One</option>
+              <option value="Checking">Checking</option>
               <option value="Saving">Saving</option>
             </select>  
             <!-- <input class="w-full mt-2 mb-4 rounded-lg p-2 text-gray-400" type="text" name="" placeholder="Select One" ><br> -->
           </div>
           <div class="w-3/5">
             <label class="text-left text-[#D32D27] font-mono mt-4">Account Number</label><br>
-            <input class="mt-2 mb-4 rounded-lg p-2" type="text" name="recipient[accountNumber]" placeholder="12345678"><br>
+            <input class="mt-2 mb-4 rounded-lg p-2" type="text" name="recipient[accountNumber]" placeholder="12345678" required><br>
           </div>
       </div>
       
       
       <label class="text-left text-[#D32D27] font-mono mt-4">Account Owner</label><br>
-      <input class="w-full mt-2 mb-4 rounded-lg p-2" type="text" name="recipient[accountName]" placeholder="First & Last Name"><br>
+      <input class="w-full mt-2 mb-4 rounded-lg p-2" type="text" name="recipient[accountName]" placeholder="First & Last Name" required><br>
 
       <div class="flex justify-center">
       <input class="my-5 w-52 border-2 bg-[#D32D27] mr-4 rounded-lg text-white p-2" type="submit" value="Save">

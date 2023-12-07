@@ -1,6 +1,6 @@
 <%- include('partials/header') -%>
 
-  <h1 class="flex justify-left text-[#D32D27] font-bold mb-4">Profile Information</h1>
+  <h1 class="flex justify-left text-[#D32D27] font-bold my-8">Profile Information</h1>
   <% if (usersInfo.venmoUser == ""){ %>
     <p class="text-center  text-[#D32D27] font-mono font-ligth text-xs">Please complete your profile before continue!</p>
   <% } %>
@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <div class="flex justify-center py-5">
+  <div class="flex justify-center py-8">
     <div class="flex justify-center w-52 border-2 bg-[#D32D27] mr-4 rounded-lg">
         <a href="/profileedit"
         class="text-white p-2">Edit Information</a>
@@ -29,13 +29,6 @@
   </div>
     
    
-    
-  
-
-  
-  
-  <pre class="block bg-gray-300 p-4 text-sm"><%= userProfile %></pre>
-
 
  
 

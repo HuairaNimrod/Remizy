@@ -65,7 +65,8 @@ exports.createUser = async (req, res) => {
     const user = new User({
       email: req.body.email,
       venmoUser: req.body.venmoUser,
-      nickname: req.body.nickname
+      nickname: req.body.nickname,
+      isAdmin: req.body.isAdmin
     }
   )
     const data = await user.save();

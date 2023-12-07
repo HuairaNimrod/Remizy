@@ -4,10 +4,10 @@ const Operations = db.operation;
 
 exports.getOperations = (req, res) =>{
 
-  let senderName = req.params.sender;
+  let userId = req.params.sender;
 
   try{
-      Operations.find({sender: senderName})
+      Operations.find({usersId: userId})
       .then((data) => {
           res.send(data);
       })
@@ -24,7 +24,7 @@ exports.getOperations = (req, res) =>{
 exports.createOperation = (req, res) => {
     try{
       // Validate request
-     if (!req.body.sender || !req.body.receiver || !req.body.amount || !req.body.rate| !req.body.status) {
+     if (!req.body.sender || !req.body.usersId || !req.body.receiver || !req.body.amount || !req.body.rate| !req.body.status) {
       res.status(400).send({ message: 'Content can not be empty!' });
       return;
      }

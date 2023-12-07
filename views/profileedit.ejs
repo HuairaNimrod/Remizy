@@ -1,6 +1,6 @@
 <%- include('partials/header') -%>
 
-  <h1 class="flex justify-left text-[#D32D27] font-bold mb-4">Edit Information</h1>
+  <h1 class="flex justify-left text-[#D32D27] font-bold my-8">Edit Information</h1>
   <div class="flex justify-center">
     <form action="/updateUsers/<%=usersInfo._id%>" method="POST" class="mt-4 mb-4 w-2/3">
       <input type="hidden" name="_method" value="PUT">
@@ -15,7 +15,7 @@
       <input class="w-full mt-4 mb-4 rounded-lg p-2" type="text" name="users[nickname]" value="<%=usersInfo.nickname%>"><br>      
       
       <div class="flex justify-center">
-        <input class="flex justify-center my-5 w-52 border-2 bg-[#D32D27] mr-4 rounded-lg text-white p-2" type="submit" value="Save">
+        <input class="flex justify-center my-8 w-52 border-2 bg-[#D32D27] mr-4 rounded-lg text-white p-2" type="submit" value="Save">
       </div>
       
     </form>

@@ -53,9 +53,9 @@ routes.get('/',  async (req, res, next) => {
                       //populate the main page
                     try {
                                 console.log('--------:(');
-                                console.log(app.locals.userVenmo);
+                                console.log(app.locals.usersId);
                                 console.log('--------:(');
-                                const responseOperations = await axios.get(`http://localhost:8080/operations/${app.locals.userVenmo}`);
+                                const responseOperations = await axios.get(`http://localhost:8080/operations/${app.locals.usersId}`);
                                 // console.log(responseOperations.data);
                                 const transfers = responseOperations.data;
                                 console.log(':)');
@@ -98,6 +98,7 @@ routes.get('/',  async (req, res, next) => {
                         email: userDetail.email,
                         venmoUser: '',
                         nickname: userDetail.nickname,
+                        isAdmin: false
                       });
                       console.log(response.data);
                       const users = response.data;
@@ -206,15 +207,27 @@ routes.get('/transaction', requiresAuth(), async (req, res, next) => {
     const response = await axios.get(apiUrl, {headers});
     const users =response.data;
     console.log("asdasd "+ users.email);
-    const hasEmail = true;
-    const responseRecipients = await axios.get(`http://localhost:8080/recipients/${users._id}`);
-    const recipientList = responseRecipients.data
-    res.render('transaction', {
-      title: "Operation",
-      hasEmail,
-      recipientList,
-      venmoUser: users.venmoUser
+    console.log("venmo account "+ users.venmoUser);
+    if(users.venmoUser ===""){
+
+      console.log("!!!!  complete profile");
+      res.redirect('/profile');
+    }
+    else{
+      const hasEmail = true;
+      console.log("inside "+users._id)
+      const responseRecipients = await axios.get(`http://localhost:8080/recipients/${users._id}`);
+      const recipientList = responseRecipients.data
+      res.render('transaction', {
+        title: "Operation",
+        hasEmail,
+        recipientList,
+        venmoUser: users.venmoUser,
+        usersId: users._id
     });
+
+    }
+    
   }
   catch{
     const hasEmail = false;
@@ -255,7 +268,6 @@ routes.post('/transactionStep1', async (req, res) => {
   try {
     console.log('youre in step 2');
     console.log(req.body.operation);
-
     const response = await axios.post('http://localhost:8080/operations', req.body.operation);
     console.log(response.data);
     console.log("this is the "+response.data._id);
