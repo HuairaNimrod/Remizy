@@ -1,0 +1,65 @@
+<%- include('partials/header') -%>
+
+ 
+<% if (locals.isAuthenticated) { %>
+
+   
+    
+    
+        <h4 class="text-[#6E6E6E] font-mono pl-3 mt-4">Transfers</h4>
+
+        <div class="flex justify-center bg-white p-4 rounded-lg my-8">
+
+            <table class="table-auto w-full mb-4">
+                <thead>
+                  <tr>
+                    <th>Recipient</th>
+                    <th>Amount</th>
+                    <th>State</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+              
+
+                <tbody>
+
+                <% if(hasOperations) {%>
+                    <% for(var i=0; i < operationsList.length; i++) { %>
+                    <tr class="border-b-2 ">
+                        <td class="p-2 text-center font-light"><%= operationsList[i].receiver %></td>
+                        <td class="p-2 text-center font-light"><span>$</span><%= operationsList[i].amount %></td>
+
+
+
+
+                        <% if(operationsList[i].status==="In Progress") {%>
+                          <td class="p-2 text-center font-light text-[#F2C335]">
+                        <%} else if (operationsList[i].status==="Finished") {%>
+                          <td class="p-2 text-center font-light text-[#6BD1AF]">
+                        <%} else if (operationsList[i].status==="Canceled") {%>
+                          <td class="p-2 text-center font-light text-[#D4322C]">
+                        <%} else {%>
+                          <td class="p-2 text-center font-light">
+                        <% }%> 
+                        <%= operationsList[i].status %></td>
+
+                        <td>
+                          <div class="flex justify-center w-20  bg-[#D32D27] mx-4 rounded-lg">
+                            <a href="/operationEdit/<%=operationsList[i]._id%>"
+                            class="text-white p-1">Review</a>
+                          </div>
+                        </td>
+
+                    </tr>
+                    <% } %>
+                <%}%>
+                </tbody>
+              </table>
+            
+        </div>
+    
+   
+
+<% }%>
+
+<%- include('partials/footer') -%>

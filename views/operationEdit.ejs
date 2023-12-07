@@ -1,0 +1,41 @@
+<%- include('partials/header') -%>
+
+<h4 class="text-[#6E6E6E] font-mono pl-3 my-4">Update Operation</h4>
+  
+
+    <div class="flex justify-center">
+        <form action="/operationUpdate" method="POST" class="mt-4 mb-4 w-2/3">
+          <input type="hidden" name="_method" value="PUT">
+          <input type="hidden" name="operation[_id]" value="<%=operationDetail._id%>">
+
+          <label class="text-left text-[#D32D27] font-mono mt-4">Sender</label><br>
+          <input class="w-full mt-4 mb-4 rounded-lg p-2 text-gray-400" type="text"  value="<%=operationDetail.sender%>" readonly><br>
+         
+          <label class="text-[#D32D27] font-mono" for="fname">Receiver</label><br>
+          <input class="w-full mt-4 mb-4 rounded-lg p-2 text-gray-400" type="text"  value="<%=operationDetail.receiver%>" readonly><br>
+    
+          <label class="text-[#D32D27] font-mono" for="fname">Amount</label><br>
+          <input class="w-full mt-4 mb-4 rounded-lg p-2 text-gray-400" type="text"  value="<%=operationDetail.amount%>" readonly><br>      
+          
+          <label class="text-[#D32D27] font-mono" for="fname">Venmo Deposit Id</label><br>
+          <input class="w-full mt-4 mb-4 rounded-lg p-2 text-gray-400" name="operation[depositId] type="text" placeholder="none" value="<%=operationDetail.depositId%>" readonly ><br>      
+
+          <label class="text-left text-[#D32D27] font-mono mt-4">Status</label><br>
+          <select class="w-full mt-2 mb-4 rounded-lg p-2" id="status" name="operation[status]"  required>
+            <option class="text-gray-400" value="<%=operationDetail.status%>" disabled selected><%=operationDetail.status%></option>
+            <option value="Canceled">Canceled</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Finished">Finished</option>
+          </select>  
+
+
+          <div class="flex justify-center">
+            <input class="flex justify-center my-8 w-52  bg-[#D32D27] rounded-lg text-white p-2" type="submit" value="Update">
+          </div>
+          
+         
+
+        </form>
+    </div>
+
+<%- include('partials/footer') -%>

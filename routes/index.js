@@ -43,46 +43,60 @@ routes.get('/',  async (req, res, next) => {
               const response = await axios.get(apiUrl, {headers});
               const users =response.data;
               app.locals.usersId = users._id; //setting the users_id as in locals
-              app.locals.userVenmo = users.venmoUser // venmoUser in locals
+              app.locals.userVenmo = users.venmoUser; // venmoUser in locals
+              app.locals.isAdmin = users.isAdmin;
               console.log("asdasd "+ users.email);
               console.log("venmo users: "+ users.venmoUser);
               console.log(users);
 
-              if(app.locals.userVenmo!=""){
-        
-                      //populate the main page
-                    try {
-                                console.log('--------:(');
-                                console.log(app.locals.usersId);
-                                console.log('--------:(');
-                                const responseOperations = await axios.get(`http://localhost:8080/operations/${app.locals.usersId}`);
-                                // console.log(responseOperations.data);
-                                const transfers = responseOperations.data;
-                                console.log(':)');
-                                console.log(transfers);
-                                const hasOperations = true;
-                                res.render('index', {
-                                  title: 'Auth0 Webapp sample Nodejs',
-                                  isAuthenticated: req.oidc.isAuthenticated(),
-                                  transfers,
-                                  hasOperations
-                                });
 
+              if(app.locals.isAdmin){
 
+                console.log("admin view");
+                res.redirect('/operationsList');
 
-                      } catch{
-                                console.log(" saddddd ");
-                                res.redirect('/profile');
-                              }
               }else{
-                      
-                      const hasOperations= false;
-                      res.render('index', {
-                        title: 'Auth0 Webapp sample Nodejs',
-                        isAuthenticated: req.oidc.isAuthenticated(),
-                        hasOperations
-                      });
+
+
+                  if(app.locals.userVenmo!=""){
+                
+                          //populate the main page
+                        try {
+                                    console.log('--------:(');
+                                    console.log(app.locals.usersId);
+                                    console.log('--------:(');
+                                    const responseOperations = await axios.get(`http://localhost:8080/operations/${app.locals.usersId}`);
+                                    // console.log(responseOperations.data);
+                                    const transfers = responseOperations.data;
+                                    console.log(':)');
+                                    console.log(transfers);
+                                    const hasOperations = true;
+                                    res.render('index', {
+                                      title: 'Auth0 Webapp sample Nodejs',
+                                      isAuthenticated: req.oidc.isAuthenticated(),
+                                      transfers,
+                                      hasOperations
+                                    });
+
+
+
+                          } catch{
+                                    console.log(" saddddd ");
+                                    res.redirect('/profile');
+                                  }
+                  }else{
+                          
+                          const hasOperations= false;
+                          res.render('index', {
+                            title: 'Auth0 Webapp sample Nodejs',
+                            isAuthenticated: req.oidc.isAuthenticated(),
+                            hasOperations
+                          });
+                  }
+
               }
+
+              
 
 
         }catch{
@@ -125,6 +139,71 @@ routes.get('/',  async (req, res, next) => {
   }
   
 );
+
+routes.get('/operationsList', async (req, res) => {
+  const usersId = app.locals.usersId;
+  
+  try {
+    const response = await axios.get('http://localhost:8080/operations');
+    const operationsList =response.data;
+    const hasOperations= true;
+    console.log(operationsList);
+
+    res.render('operationsList',{
+      isAuthenticated: req.oidc.isAuthenticated(),
+      title: "Operations List",
+      operationsList,
+      hasOperations
+    });
+
+    }catch(error) {
+      console.error(error);
+  
+    }
+});
+
+routes.get('/operationEdit/:id', async (req, res) => {
+
+  const id = req.params.id;
+
+    try{
+
+        const response = await axios.get(`http://localhost:8080/operations/find/${id}`);
+        const operationDetail =response.data;
+        console.log(operationDetail);
+
+        res.render('operationEdit',{
+            isAuthenticated: req.oidc.isAuthenticated(),
+            title: "Operation Edit ",
+            operationDetail
+          });
+     
+    }catch{
+
+      console.log('fail');
+    }   
+});
+
+
+routes.post('/operationUpdate', async (req, res) => {
+  
+  console.log('youre in Operation Update');
+  const operationInfo = req.body.operation;
+  console.log(operationInfo);
+try {
+
+  const responseOperation = await axios.put(`http://localhost:8080/operations/${operationInfo._id}`, operationInfo);
+  const responseList = responseOperation.data;
+  console.log(responseList);
+  res.redirect('/operationsList')
+}
+ catch (error) {
+  console.error(error);
+}
+
+});
+
+
 
 
 routes.get('/profile', requiresAuth(), async (req, res, next) => {

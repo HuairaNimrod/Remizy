@@ -2,9 +2,25 @@ const db = require('../models');
 const Operations = db.operation;
 
 
+exports.getAll = (req, res) =>{
+  try{
+      Operations.find({})
+      .then((data) => {
+          res.send(data);
+      })
+      .catch((err) => {
+          res.status(500).send({
+          message: err.message || 'Some error occurred while retrieving operations.'
+      });
+      });
+  } catch(err){
+    res.status(500).json(err);
+  }
+};
+
 exports.getOperations = (req, res) =>{
 
-  let userId = req.params.sender;
+  let userId = req.params.userId;
 
   try{
       Operations.find({usersId: userId})
@@ -20,6 +36,27 @@ exports.getOperations = (req, res) =>{
     res.status(500).json(err);
   }
 };
+
+exports.getOperationsById = (req, res) =>{
+
+  let id = req.params.id;
+
+  try{
+      Operations.findById({_id: id})
+      .then((data) => {
+          res.send(data);
+      })
+      .catch((err) => {
+          res.status(500).send({
+          message: err.message || 'Some error occurred while retrieving operations.'
+      });
+      });
+  } catch(err){
+    res.status(500).json(err);
+  }
+};
+
+
 
 exports.createOperation = (req, res) => {
     try{
@@ -55,8 +92,8 @@ exports.createOperation = (req, res) => {
         res.status(400).send({ message: 'Content can not be empty!' });
         return;
        }
-
-      const updateOperation = await Operations.findOneAndUpdate({_id: req.params.id}, req.body, { new: true });
+        //new:true is to retrieve the document updated in response
+      const updateOperation = await Operations.findOneAndUpdate({_id: operationId}, req.body, { new: true });
       res.status(201).json(updateOperation);
     } catch (error) {
       res.status(500).send(error);

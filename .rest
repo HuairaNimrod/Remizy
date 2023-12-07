@@ -4,6 +4,12 @@ GET http://localhost:8080/login
 ###
 GET http://localhost:8080/operations
 
+###
+GET http://localhost:8080/operations/find/6571688dbf1226689372c44e
+
+###
+GET http://localhost:8080/operations/657138c76312ac4ae978fba6
+
 
 ###
 POST http://localhost:8080/operations HTTP/1.1
@@ -20,14 +26,13 @@ content-type: application/json
 }
 
 ###
-PUT http://localhost:8080/operations/656ee2c79e4980d0f6426cf5 HTTP/1.1
+PUT http://localhost:8080/operations/6571526d4bc27e212d04423f HTTP/1.1
 content-type: application/json
 
 {
-    
-    "depositId":"032342000",
-    "status":"Closed",
-    "comments":"post test"
+  "_id": "6571526d4bc27e212d04423f",
+  "depositId": "null",
+  "status": "Canceled"
 }
 
 
